@@ -6,7 +6,7 @@ During this hackathon, our team focused on developing a machine learning model b
 
 The dataset displayed significant class imbalance, which we tackled using the Synthetic Minority Over-sampling Technique (SMOTE). We investigated a variety of machine learning models, such as Logistic Regression, SVM, Naive Bayes, Stochastic Gradient Descent, k-Nearest Neighbours, Decision Trees, and ensemble methods like Random Forests, Gradient Boosting, AdaBoost,  XGBoost, LightGBM with a sub-optimal hyper-parameters. We utilised cross-validation methods like the Leave One Out and Monte Carlo approach to identify the optimal model in each case.
 
-Our findings revealed that the 31-feature strategy outperformed the 63-feature approach. Utilising this strategy with LeaveOneOut, we achieved the best performance with the XGBClassifier model, exhibiting a precision of 0.833, recall of 1, MCC of 0.877, and an overall accuracy of 0.944. However, implementing SMOTE to manage class imbalance led to a decrease in model accuracy, indicating that the generated synthetic samples might not accurately represent the true distribution of the minority class.
+Our findings revealed that the 63-feature strategy outperformed the 31-feature approach. Utilising this strategy with LeaveOneOut, we achieved the best performance with the XGBClassifier model, exhibiting a precision of 0.833, recall of 1, MCC of 0.877, and an overall accuracy of 0.944. However, implementing SMOTE to manage class imbalance led to a decrease in model accuracy, indicating that the generated synthetic samples might not accurately represent the true distribution of the minority class.
 
 
 ## Feature Selection Approach: 
@@ -26,32 +26,35 @@ Upon executing various models utilising the 63 features (a comprehensive union o
 Leave One Out
 | Model Name | Precision | Recall | MCC | Accuracy
 | ------ | ------ | ------ | ------ | ------ |
-| Logistic Regression |  ------ | ------ | ------ | ------ |
-| SVC |  ------ | ------ | ------ | ------ |
-| Gaussian NB | ------ | ------ | ------ | ------ |
-| Multinomial NB  |  ------ | ------ | ------ | ------ |
-| SGDClassifier |  ------ | ------ | ------ | ------ |
-| KNeighborsClassifier |  ------ | ------ | ------ | ------ |
-| DecisionTreeClassifier |  ------ | ------ | ------ | ------ |
-| RandomForestClassifier |  ------ | ------ | ------ | ------ |
-| GradientBoostingClassifier |  ------ | ------ | ------ | ------ |
-| XGBClassifier |  ------ | ------ | ------ | ------ |
-| LightGBM |  ------ | ------ | ------ | ------ |
+| Logistic Regression |  0.385 | 1.0 | 0.385 | 0.556 |
+| SVC |  0.4 | 0.8 | 0.305 | 0.611 |
+| Gaussian NB |  0.294 | 1.0 | 0.15 | 0.333 |
+| Multinomial NB  | 0.4 | 0.4 | 0.169 | 0.667 |
+| SGDClassifier |   0.417 | 1.0 | 0.439 | 0.611 |
+| KNeighborsClassifier | 0.273 | 0.6 | -0.014 | 0.444 |
+| DecisionTreeClassifier | 0.571 | 0.8 | 0.523 | 0.778 |
+| RandomForestClassifier | 0.833 | 1.0 | 0.877 | 0.944 |
+| GradientBoostingClassifier  | 0.429 | 0.6 | 0.269 | 0.667 |
+| XGBClassifier | 0.833 | 1.0 | 0.877 | 0.944 |
+| LightGBM | 0.75 | 0.6 | 0.564 | 0.833 |
 
 MonteCarlo
 | Model Name | Precision | Recall | MCC | Accuracy
 | ------ | ------ | ------ | ------ | ------ |
-| Logistic Regression |  ------ | ------ | ------ | ------ |
-| SVC |  ------ | ------ | ------ | ------ |
-| Gaussian NB | ------ | ------ | ------ | ------ |
-| Multinomial NB  |  ------ | ------ | ------ | ------ |
-| SGDClassifier |  ------ | ------ | ------ | ------ |
-| KNeighborsClassifier |  ------ | ------ | ------ | ------ |
-| DecisionTreeClassifier |  ------ | ------ | ------ | ------ |
-| RandomForestClassifier |  ------ | ------ | ------ | ------ |
-| GradientBoostingClassifier |  ------ | ------ | ------ | ------ |
-| XGBClassifier |  ------ | ------ | ------ | ------ |
-| LightGBM |  ------ | ------ | ------ | ------ |
+| Logistic Regression | 0.417 | 1.0 | 0.439 | 0.611 |
+| SVC | 0.444 | 0.8 | 0.372 | 0.667 |
+| Gaussian NB | 0.294 | 1.0 | 0.15 | 0.333
+| Multinomial NB  | 0.385 | 1.0 | 0.385 | 0.556 |
+| SGDClassifier | 0.417 | 1.0 | 0.439 | 0.611 | 
+| KNeighborsClassifier | 0.333 | 0.8 | 0.175 | 0.5 |
+| DecisionTreeClassifier | 0.385 | 1.0 | 0.385 | 0.556 |
+| RandomForestClassifier | 0.75 | 0.6 | 0.564 | 0.833 |
+
+| GradientBoostingClassifier | 0.556 | 1.0 | 0.62 | 0.778 |
+| XGBClassifier | 0.714 | 1.0 | 0.777 | 0.889 |
+| LightGBM | 0.714 | 1.0 | 0.777 | 0.889 |
+| VotingClassifier | 0.571 | 0.8 | 0.523 | 0.778 |
+
 
 
 ## XGB Model Performance with or without SMOTE:
@@ -60,9 +63,10 @@ While we attempted to address the imbalanced dataset using the Synthetic Minorit
 
 | Configuration | Accuracy | MCC |
 | ------ | ------ | ------ |
-| Logistic Regression |  ------ | ------ | 
-| SVC |  ------ | ------ | 
-| Gaussian NB | ------ | ------ | 
-| Multinomial NB  |  ------ | ------ | 
+| SMOTE + 63 features |  0.89 | 0.72 |  
+| Without SMOTE + 63 features |  0.94 | 0.8 | 
+| Without SMOTE + 31 Features | 0.85 | 0.72 | 
+| SMOTE + 31 Features |  0.81 | 0.66 | 
+
 
 
