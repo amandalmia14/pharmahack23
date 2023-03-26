@@ -1,4 +1,4 @@
-# PharmaHack23 -StemCell 
+# PharmaHacks'23 -StemCell 
 
 ## Abstract
 
